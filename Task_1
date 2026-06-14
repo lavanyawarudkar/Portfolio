@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Lavanya Warudkar — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+
+/* ── tokens ── */
+:root {
+  --bg:       #fafaf8;
+  --surface:  #f4f3ef;
+  --white:    #ffffff;
+  --ink:      #1a1a1a;
+  --mid:      #555555;
+  --light:    #999999;
+  --border:   #e5e4df;
+  --blue:     #2563eb;
+  --blue-lt:  #eff4ff;
+}
+
+/* ── base ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+
+/* ── nav ── */
+header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(250,250,248,0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+nav {
+  max-width: 960px; margin: 0 auto;
+  padding: 0 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  height: 64px;
+}
+.logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px; color: var(--ink);
+  text-decoration: none;
+}
+nav ul { display: flex; list-style: none; gap: 2px; }
+nav ul li a {
+  text-decoration: none; color: var(--mid);
+  font-size: 14px; font-weight: 500;
+  padding: 6px 12px; border-radius: 6px;
+  transition: color .2s, background .2s;
+}
+nav ul li a:hover { color: var(--ink); background: var(--surface); }
+
+/* ── hero ── */
+.hero {
+  max-width: 960px; margin: 0 auto;
+  padding: 96px 24px 80px;
+}
+.hero-tag {
+  display: inline-block;
+  font-size: 13px; color: var(--blue);
+  background: var(--blue-lt);
+  padding: 4px 12px; border-radius: 100px;
+  margin-bottom: 28px; font-weight: 500;
+}
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(36px, 5vw, 60px);
+  line-height: 1.12;
+  color: var(--ink);
+  margin-bottom: 22px;
+  max-width: 640px;
+}
+.hero p {
+  font-size: 18px; color: var(--mid);
+  max-width: 520px; line-height: 1.75;
+  margin-bottom: 36px;
+}
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 12px 22px; border-radius: 8px;
+  font-size: 14.5px; font-weight: 600;
+  text-decoration: none; transition: opacity .18s, transform .18s;
+}
+.btn:hover { opacity: .85; transform: translateY(-1px); }
+.btn-dark { background: var(--ink); color: #fff; }
+.btn-outline {
+  background: transparent; color: var(--ink);
+  border: 1.5px solid var(--border);
+}
+.btn-outline:hover { border-color: #bbb; }
+
+/* ── divider ── */
+.divider {
+  max-width: 960px; margin: 0 auto;
+  border: none; border-top: 1px solid var(--border);
+}
+
+/* ── section wrapper ── */
+.section {
+  max-width: 960px; margin: 0 auto;
+  padding: 80px 24px;
+}
+.section-label {
+  font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--light); font-weight: 600; margin-bottom: 10px;
+}
+.section-heading {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(26px, 3.5vw, 38px);
+  color: var(--ink); margin-bottom: 40px;
+  line-height: 1.2;
+}
+
+/* ── about ── */
+#about { background: var(--surface); }
+.about-inner { max-width: 960px; margin: 0 auto; padding: 80px 24px; }
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1.5fr;
+  gap: 64px; align-items: start;
+}
+.about-photo {
+  width: 100%; aspect-ratio: 4/5;
+  background: var(--border);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--light); font-size: 56px;
+  overflow: hidden;
+}
+.about-text p {
+  font-size: 16px; color: var(--mid);
+  line-height: 1.85; margin-bottom: 18px;
+}
+.about-text p:last-child { margin-bottom: 0; }
+
+/* ── skills ── */
+.skills-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+.skill-item {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 22px;
+  transition: border-color .2s, box-shadow .2s;
+}
+.skill-item:hover {
+  border-color: #ccc;
+  box-shadow: 0 4px 16px rgba(0,0,0,.06);
+}
+.skill-top {
+  display: flex; justify-content: space-between;
+  align-items: center; margin-bottom: 12px;
+}
+.skill-name { font-size: 14.5px; font-weight: 600; color: var(--ink); }
+.skill-pct { font-size: 13px; color: var(--light); }
+.track {
+  height: 5px; background: var(--surface);
+  border-radius: 100px; overflow: hidden;
+}
+.bar {
+  height: 100%; border-radius: 100px;
+  width: 0; transition: width 1.2s cubic-bezier(.4,0,.2,1);
+}
+
+/* ── projects ── */
+#projects { background: var(--surface); }
+.projects-inner { max-width: 960px; margin: 0 auto; padding: 80px 24px; }
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+.proj {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px; padding: 28px;
+  transition: box-shadow .25s, transform .25s;
+}
+.proj:hover {
+  box-shadow: 0 8px 28px rgba(0,0,0,.08);
+  transform: translateY(-3px);
+}
+.proj-icon {
+  width: 42px; height: 42px;
+  border-radius: 10px; background: var(--blue-lt);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--blue); font-size: 18px;
+  margin-bottom: 18px;
+}
+.proj h3 {
+  font-size: 16.5px; font-weight: 600;
+  color: var(--ink); margin-bottom: 9px;
+}
+.proj p {
+  font-size: 14px; color: var(--mid);
+  line-height: 1.75; margin-bottom: 18px;
+}
+.proj-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.tag {
+  font-size: 12px; padding: 3px 10px;
+  background: var(--surface); color: var(--mid);
+  border-radius: 6px; border: 1px solid var(--border);
+}
+
+/* ── contact ── */
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1.4fr;
+  gap: 56px; align-items: start;
+}
+.contact-left h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px; color: var(--ink); margin-bottom: 12px;
+}
+.contact-left p { font-size: 15px; color: var(--mid); line-height: 1.8; margin-bottom: 28px; }
+.contact-detail {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 16px; font-size: 14px; color: var(--mid);
+}
+.contact-detail i { color: var(--blue); width: 16px; text-align: center; }
+
+.form-group { margin-bottom: 14px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+label { display: block; font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+input, textarea {
+  width: 100%; padding: 11px 14px;
+  border: 1.5px solid var(--border); border-radius: 8px;
+  font-family: 'DM Sans', sans-serif; font-size: 14px;
+  color: var(--ink); background: var(--white);
+  outline: none; resize: vertical;
+  transition: border-color .2s, box-shadow .2s;
+}
+input:focus, textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(37,99,235,.1);
+}
+input::placeholder, textarea::placeholder { color: var(--light); }
+.btn-send {
+  width: 100%; padding: 13px;
+  background: var(--ink); color: #fff;
+  border: none; border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px; font-weight: 600;
+  cursor: pointer;
+  transition: opacity .2s, transform .2s;
+}
+.btn-send:hover { opacity: .85; transform: translateY(-1px); }
+
+/* ── footer ── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 36px 24px;
+}
+.footer-inner {
+  max-width: 960px; margin: 0 auto;
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 16px;
+}
+.footer-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 17px; color: var(--ink);
+}
+footer p { font-size: 13px; color: var(--light); }
+.socials { display: flex; gap: 14px; }
+.socials a {
+  color: var(--light); font-size: 17px;
+  text-decoration: none;
+  transition: color .2s;
+}
+.socials a:hover { color: var(--ink); }
+
+/* ── scroll reveal ── */
+.fade {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.fade.in { opacity: 1; transform: none; }
+.fade.d1 { transition-delay: .1s; }
+.fade.d2 { transition-delay: .2s; }
+.fade.d3 { transition-delay: .3s; }
+
+/* ── responsive ── */
+@media (max-width: 720px) {
+  .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; text-align: center; }
+  nav ul li a { padding: 5px 8px; font-size: 13px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, .fade, .bar { transition: none !important; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header>
+  <nav>
+    <a href="#home" class="logo">Lavanya Warudkar</a>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero">
+    <div class="hero-tag">👋 Open to opportunities</div>
+    <h1>Hi, I'm Lavanya Warudkar — I build things for the web.</h1>
+    <p>I'm an IT student who loves turning ideas into clean, working websites. I care about code that's easy to read and interfaces that are easy to use.</p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-dark">See my work</a>
+      <a href="#contact" class="btn btn-outline">Get in touch</a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-inner">
+    <div class="about-grid">
+      <div class="about-photo fade">
+        <img src="photo.jpeg" alt="Lavanya Warudkar">
+      </div>
+      <div class="about-text fade d1">
+        <div class="section-label">About me</div>
+        <div class="section-heading">A little bit about who I am</div>
+        <p>I'm a final-year Information Technology student with a real interest in web development and software. I started with curiosity and a few YouTube tutorials — now I build things that actually work.</p>
+        <p>I enjoy writing clean HTML and CSS, making JavaScript do useful things, and picking up new tools when a project needs them. I'm comfortable working alone and in teams.</p>
+        <p>Outside of code, I like solving problems, reading, and occasionally getting completely lost trying to learn something new.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section">
+    <div class="section-label fade">What I know</div>
+    <div class="section-heading fade d1">Skills</div>
+    <div class="skills-list">
+      <div class="skill-item fade">
+        <div class="skill-top"><span class="skill-name">HTML</span><span class="skill-pct">95%</span></div>
+        <div class="track"><div class="bar" data-w="95" style="background:#e34c26;"></div></div>
+      </div>
+      <div class="skill-item fade d1">
+        <div class="skill-top"><span class="skill-name">CSS</span><span class="skill-pct">90%</span></div>
+        <div class="track"><div class="bar" data-w="90" style="background:#2965f1;"></div></div>
+      </div>
+      <div class="skill-item fade d2">
+        <div class="skill-top"><span class="skill-name">JavaScript</span><span class="skill-pct">85%</span></div>
+        <div class="track"><div class="bar" data-w="85" style="background:#d4a800;"></div></div>
+      </div>
+      <div class="skill-item fade">
+        <div class="skill-top"><span class="skill-name">Python</span><span class="skill-pct">80%</span></div>
+        <div class="track"><div class="bar" data-w="80" style="background:#4b8bbe;"></div></div>
+      </div>
+      <div class="skill-item fade d1">
+        <div class="skill-top"><span class="skill-name">Java</span><span class="skill-pct">75%</span></div>
+        <div class="track"><div class="bar" data-w="75" style="background:#f89820;"></div></div>
+      </div>
+      <div class="skill-item fade d2">
+        <div class="skill-top"><span class="skill-name">SQL</span><span class="skill-pct">80%</span></div>
+        <div class="track"><div class="bar" data-w="80" style="background:#16a34a;"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="projects-inner">
+    <div class="section-label fade">Things I've made</div>
+    <div class="section-heading fade d1">Projects</div>
+    <div class="projects-grid">
+
+      <div class="proj fade">
+        <div class="proj-icon"><i class="fas fa-user"></i></div>
+        <h3>Portfolio Website</h3>
+        <p>This site — a responsive portfolio built from scratch with HTML, CSS and JavaScript. No frameworks, just code.</p>
+        <div class="proj-tags">
+          <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+        </div>
+      </div>
+
+      <div class="proj fade d1">
+        <div class="proj-icon"><i class="fas fa-users"></i></div>
+        <h3>Student Management System</h3>
+        <p>A simple system for adding, searching, and managing student records. Built with Python and SQL.</p>
+        <div class="proj-tags">
+          <span class="tag">Python</span><span class="tag">SQL</span>
+        </div>
+      </div>
+
+      <div class="proj fade d2">
+        <div class="proj-icon"><i class="fas fa-cloud-sun"></i></div>
+        <h3>Weather App</h3>
+        <p>Search any city and get live weather info using a public API. Clean layout, works on mobile too.</p>
+        <div class="proj-tags">
+          <span class="tag">JavaScript</span><span class="tag">API</span>
+        </div>
+      </div>
+
+      <div class="proj fade d3">
+        <div class="proj-icon"><i class="fas fa-calculator"></i></div>
+        <h3>Calculator App</h3>
+        <p>A functional calculator with keyboard support and a clean, minimal design. Nothing fancy — just works.</p>
+        <div class="proj-tags">
+          <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section">
+    <div class="section-label fade">Say hello</div>
+    <div class="section-heading fade d1">Contact</div>
+    <div class="contact-grid">
+      <div class="fade d1">
+        <h3>Let's talk</h3>
+        <p>If you have a project, an opportunity, or just want to connect — feel free to reach out. I'll reply within a day.</p>
+        <div class="contact-detail"><i class="fas fa-envelope"></i> lavanyawarudkar5@email.com</div>
+        <div class="contact-detail"><i class="fas fa-map-marker-alt"></i> Nagpur, India</div>
+        <div class="contact-detail"><i class="fab fa-github"></i> https://github.com/lavanyawarudkar</div>
+        <div class="contact-detail"><i class="fab fa-linkedin"></i> https://www.linkedin.com/in/lavanya-warudkar-6b44b8403/</div>
+      </div>
+
+      <div class="fade d2">
+        <form id="contactForm">
+          <div class="form-row">
+            <div>
+              <label>First name</label>
+              <input type="text" placeholder="" required>
+            </div>
+            <div>
+              <label>Last name</label>
+              <input type="text" placeholder="" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="" required>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea rows="5" placeholder="What's on your mind?" required></textarea>
+          </div>
+          <button type="submit" class="btn-send">Send message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-name">Lavanya Warudkar</div>
+    <p>© 2026 — Built with HTML, CSS & JS</p>
+    <div class="socials">
+      <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* scroll fade-in */
+const fades = document.querySelectorAll('.fade');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+}, { threshold: 0.12 });
+fades.forEach(el => obs.observe(el));
+
+/* skill bars */
+const barObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.bar').forEach(b => b.style.width = b.dataset.w + '%');
+      barObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.skill-item').forEach(c => barObs.observe(c));
+
+/* contact form */
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('.btn-send');
+  btn.textContent = 'Message sent ✓';
+  btn.style.background = '#16a34a';
+  setTimeout(() => {
+    btn.textContent = 'Send message';
+    btn.style.background = '';
+    this.reset();
+  }, 3000);
+});
+</script>
+</body>
+</html>
